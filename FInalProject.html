@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Date Idea Generator</title>
+  <link rel="stylesheet" href="../Styles.css/styles.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   
+</head>
+<body>
+    <!-- Inside <body>, above your navigation menu -->
+        <div class="site-title">Date Idea Generator</div>
+        <div class="container">
+        <!-- Navigation Menu (same across all pages, just update the "active" class) -->
+        <div class="nav-container">
+          <ul class="nav-menu">
+            <li><a href="FinalProject.html"class="active">Date Idea Generator</a></li>
+            <li><a href="Mission.html">Our Mission</a></li>
+            <li><a href="Help.html" >Success Stories</a></li>
+            <li><a href="Donation.html">Donate Now!</a></li>
+            
+            
+          </ul>
+        </div>
+
+
+  <div class="container">
+    <h1 class="Header1">Date Idea Generator</h1>
+    <p class="Paragraph">
+      Have you ever been stuck wondering what to do for a date? 
+      We are here to help. Simply put in the information below and we can generate
+      the best date to fit your needs.
+    </p>
+    <form id="dateForm">
+      <label for="group">Is it a group date?</label>
+      <select id="group" name="Group">
+        <option value="Group">Yes</option>
+        <option value="Single">No</option>
+      </select>
+      
+      <label for="budget">What's your budget?</label>
+      <select id="budget" name="budget">
+        <option value="Free">Free</option>
+        <option value="low">Under $20</option>
+        <option value="medium">$20 - $50</option>
+        <option value="high">$50+</option>
+      </select>
+      
+      <label for="transportation">Transportation?</label>
+      <select id="transportation" name="transportation">
+        <option value="Car">Car</option>
+        <option value="Bus">Bus</option>
+        <option value="Train">Train</option>
+        <option value="Walk">Walk</option>
+      </select>
+      
+      <label for="weather">Weather?</label>
+      <select id="weather" name="weather">
+        <option value="Sunny">Sunny</option>
+        <option value="Rainy">Rainy</option>
+        <option value="Snowy">Snowy</option>
+        <option value="Cloudy">Cloudy</option>
+      </select>
+      
+      <button type="submit">Find Date Idea</button>
+    </form>
+    <div id="output"></div>
+  </div>
+
+  <script>
+    // Define all date idea options for different combinations
+    const dateIdeas = {
+      // Free date ideas
+      Free: {
+        Sunny: {
+          Walk: {
+            Single: "a scenic hike with a picnic of homemade sandwiches at a viewpoint.",
+            Group: "a beach day with frisbee and volleyball games."
+          },
+          Car: {
+            Single: "a drive to a nearby scenic spot for stargazing.",
+            Group: "a road trip to a free museum or gallery with donation-based admission."
+          },
+          Bus: {
+            Single: "a trip to a botanical garden or public park with hidden spots.",
+            Group: "a scavenger hunt around the city using public transportation."
+          },
+          Train: {
+            Single: "a day exploring a new neighborhood with window shopping.",
+            Group: "a train ride to a nearby nature reserve for bird watching."
+          }
+        },
+        Rainy: {
+          Walk: {
+            Single: "a visit to a local library followed by coffee under an awning.",
+            Group: "an umbrella-equipped photography walk capturing rainy cityscapes."
+          },
+          Car: {
+            Single: "a drive to watch the rain at a scenic overlook with thermoses of hot drinks.",
+            Group: "a car karaoke session followed by parking to watch the rainfall."
+          },
+          Bus: {
+            Single: "museum hopping using free admission days.",
+            Group: "a bus ride to a community center with free events."
+          },
+          Train: {
+            Single: "a train journey to visit free art exhibitions.",
+            Group: "organizing a mobile book club discussion during your train ride."
+          }
+        },
+        Snowy: {
+          Walk: {
+            Single: "building a snowman in a local park followed by hot chocolate at home.",
+            Group: "a competitive snowball fight and snow fort building contest."
+          },
+          Car: {
+            Single: "driving to a scenic viewpoint to admire the snow-covered landscape.",
+            Group: "snow sightseeing followed by a potluck dinner at someone's home."
+          },
+          Bus: {
+            Single: "a visit to a cozy local library with a thermos of hot tea.",
+            Group: "a winter photography challenge using public transportation."
+          },
+          Train: {
+            Single: "a scenic train journey through snowy landscapes.",
+            Group: "a train ride to a public ice skating venue that offers free admission."
+          }
+        },
+        Cloudy: {
+          Walk: {
+            Single: "a walking tour of historical buildings in your area.",
+            Group: "organizing a casual sports match in a local park."
+          },
+          Car: {
+            Single: "a drive to a local viewpoint for cloud watching and deep conversations.",
+            Group: "a car tour of several small local attractions with a picnic."
+          },
+          Bus: {
+            Single: "exploring free community events found on local bulletin boards.",
+            Group: "a progressive hangout where you visit different free locations."
+          },
+          Train: {
+            Single: "a day trip to the furthest library on the train line to discover new books.",
+            Group: "a train ride to a free festival or community event."
+          }
+        }
+      },
+      
+      // Low budget date ideas (<$20)
+      low: {
+        Sunny: {
+          Walk: {
+            Single: "getting ice cream cones and walking through a nice area of town.",
+            Group: "a picnic potluck where everyone brings one affordable item."
+          },
+          Car: {
+            Single: "a drive to a small local cafe in a scenic area.",
+            Group: "a trip to a drive-in movie theater splitting the cost per car."
+          },
+          Bus: {
+            Single: "a trip to a farmers market to sample local treats.",
+            Group: "a visit to a local fair or small community event."
+          },
+          Train: {
+            Single: "a train ride to a small town cafe with special local treats.",
+            Group: "an affordable food tour using public transportation between spots."
+          }
+        },
+        Rainy: {
+          Walk: {
+            Single: "a visit to a cozy cafe for board games and hot drinks.",
+            Group: "bowling at a discount weekday rate."
+          },
+          Car: {
+            Single: "a trip to a discount bookstore and coffee shop.",
+            Group: "a visit to an arcade or mini-golf place with weekday specials."
+          },
+          Bus: {
+            Single: "a movie at a second-run or matinee theater.",
+            Group: "a visit to a small local museum with group discount rates."
+          },
+          Train: {
+            Single: "a train journey to explore covered marketplaces.",
+            Group: "a trip to an indoor shopping center for window shopping and a shared treat."
+          }
+        },
+        Snowy: {
+          Walk: {
+            Single: "sledding at a local hill followed by hot chocolate at a cafe.",
+            Group: "a winter hike ending at a cozy cafe with affordable menu items."
+          },
+          Car: {
+            Single: "a drive to see holiday light displays with thermoses of hot chocolate.",
+            Group: "a trip to an indoor activity center with winter specials."
+          },
+          Bus: {
+            Single: "a trip to a cozy bookstore cafe to read together.",
+            Group: "visiting a local indoor attraction with group rates."
+          },
+          Train: {
+            Single: "a train ride to a holiday market for browsing.",
+            Group: "a journey to a small winter festival or community event."
+          }
+        },
+        Cloudy: {
+          Walk: {
+            Single: "browsing a local farmers market and getting ingredients for a simple meal.",
+            Group: "a visit to a public garden with a small donation fee."
+          },
+          Car: {
+            Single: "exploring a small neighboring town's main street shops.",
+            Group: "attending a local high school or community sports game."
+          },
+          Bus: {
+            Single: "a visit to a pet store or shelter to play with animals.",
+            Group: "attending a low-cost community theater production."
+          },
+          Train: {
+            Single: "a train journey to a small art gallery with affordable admission.",
+            Group: "visiting a community center with affordable activities."
+          }
+        }
+      },
+      
+      // Medium budget date ideas ($20-$50)
+      medium: {
+        Sunny: {
+          Walk: {
+            Single: "a visit to a local food festival to sample multiple vendors.",
+            Group: "renting bikes and exploring trails followed by lunch."
+          },
+          Car: {
+            Single: "a trip to a wine tasting with small plates to share.",
+            Group: "a day trip to a state park with entrance fees and lunch."
+          },
+          Bus: {
+            Single: "tickets to a local zoo or aquarium during discount hours.",
+            Group: "a visit to an escape room with a group rate."
+          },
+          Train: {
+            Single: "a train ride to a nearby city for a special lunch.",
+            Group: "a day trip to a tourist spot with group ticket discounts."
+          }
+        },
+        Rainy: {
+          Walk: {
+            Single: "tickets to a movie followed by dessert at a nice cafe.",
+            Group: "an indoor rock climbing session with introductory rates."
+          },
+          Car: {
+            Single: "a drive to a nice restaurant with a prix fixe lunch menu.",
+            Group: "a pottery painting class with group discount."
+          },
+          Bus: {
+            Single: "tickets to a local theater production or comedy show.",
+            Group: "a cooking class with a group discount."
+          },
+          Train: {
+            Single: "a train journey to a specialty restaurant in another town.",
+            Group: "attending a concert or live music venue with advance tickets."
+          }
+        },
+        Snowy: {
+          Walk: {
+            Single: "ice skating followed by hot drinks at a nice cafe.",
+            Group: "a visit to an indoor trampoline park with group rates."
+          },
+          Car: {
+            Single: "a drive to a cozy restaurant with a fireplace.",
+            Group: "a trip to an indoor water park with winter specials."
+          },
+          Bus: {
+            Single: "a visit to a spa for a quick massage or treatment.",
+            Group: "attending a local hockey game or winter sport event."
+          },
+          Train: {
+            Single: "a train ride to a special winter exhibit or attraction.",
+            Group: "a trip to an indoor amusement center with group rates."
+          }
+        },
+        Cloudy: {
+          Walk: {
+            Single: "tickets to a museum followed by lunch at the museum cafe.",
+            Group: "a group painting class with drinks included."
+          },
+          Car: {
+            Single: "a drive to a scenic restaurant with a view.",
+            Group: "a trip to a local brewery or winery with a tour and tasting."
+          },
+          Bus: {
+            Single: "a visit to a botanical garden with a special exhibit.",
+            Group: "tickets to a local sporting event with group seating."
+          },
+          Train: {
+            Single: "a train journey to visit a famous bakery or restaurant.",
+            Group: "attending a festival or special event in a nearby town."
+          }
+        }
+      },
+      
+      // High budget date ideas ($50+)
+      high: {
+        Sunny: {
+          Walk: {
+            Single: "a walking food tour with multiple upscale restaurants.",
+            Group: "reservations at an exclusive rooftop restaurant with a view."
+          },
+          Car: {
+            Single: "a drive to a luxury picnic set up by a professional service.",
+            Group: "renting a boat for a day on a lake or river."
+          },
+          Bus: {
+            Single: "tickets to a major concert or theater production.",
+            Group: "a private tour of a local attraction with a specialist guide."
+          },
+          Train: {
+            Single: "a train journey to a luxury dining experience in another city.",
+            Group: "a wine country tour with tastings at multiple vineyards."
+          }
+        },
+        Rainy: {
+          Walk: {
+            Single: "tickets to a Broadway show or major performance.",
+            Group: "a private cooking class with a chef in a restaurant kitchen."
+          },
+          Car: {
+            Single: "a drive to a high-end spa for a couples treatment.",
+            Group: "renting a private karaoke room with food and drink service."
+          },
+          Bus: {
+            Single: "tickets to a gala or special museum event.",
+            Group: "a food tour with a private guide in a culinary district."
+          },
+          Train: {
+            Single: "a full day trip to another city with dinner reservations.",
+            Group: "a private workshop like glass blowing or advanced cooking."
+          }
+        },
+        Snowy: {
+          Walk: {
+            Single: "tickets to a special winter performance like the Nutcracker.",
+            Group: "a guided snowshoeing adventure with gourmet hot drinks."
+          },
+          Car: {
+            Single: "a day trip to a ski resort with equipment rentals.",
+            Group: "renting a cabin with a hot tub for an evening gathering."
+          },
+          Bus: {
+            Single: "reservations at an upscale restaurant with a winter tasting menu.",
+            Group: "a private ice skating lesson followed by dinner."
+          },
+          Train: {
+            Single: "a train journey to a luxury hot springs resort.",
+            Group: "a winter wilderness tour with a professional guide."
+          }
+        },
+        Cloudy: {
+          Walk: {
+            Single: "tickets to a major sporting event with premium seating.",
+            Group: "a guided tour of artisanal food producers with tastings."
+          },
+          Car: {
+            Single: "a helicopter tour of the city or surrounding area.",
+            Group: "renting a luxury house for a dinner party with catering."
+          },
+          Bus: {
+            Single: "a behind-the-scenes tour of a major attraction or venue.",
+            Group: "tickets to an exclusive event or limited engagement."
+          },
+          Train: {
+            Single: "a train journey to an upscale resort for the day.",
+            Group: "a private guided tour of historical or cultural sites."
+          }
+        }
+      }
+    };
+
+    // Define fallback ideas in case a specific combination isn't found
+    const fallbackIdeas = {
+      Free: "a home movie night with homemade snacks or a sunset walk in a local park.",
+      low: "a visit to a local coffee shop for specialty drinks and shared pastries.",
+      medium: "a dinner at a mid-range restaurant followed by a movie or local event.",
+      high: "a reservation at a fine dining establishment or tickets to a major show."
+    };
+
+    // Event listener for the form submission
+    document.getElementById("dateForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      
+      // Get values from form
+      const group = document.getElementById("group").value;
+      const budget = document.getElementById("budget").value;
+      const transportation = document.getElementById("transportation").value;
+      const weather = document.getElementById("weather").value;
+      
+      // Get output element
+      const output = document.getElementById("output");
+      
+      // Build the date idea text based on user inputs
+      let dateIdea;
+      
+      // Try to find a specific match in our dateIdeas object
+      try {
+        dateIdea = dateIdeas[budget][weather][transportation][group];
+        
+        // If we found a specific match
+        if (dateIdea) {
+          output.textContent = `${group} date, ${budget} budget, using ${transportation} in ${weather} weather: Try ${dateIdea}`;
+        } else {
+          // If no specific match, use a category fallback
+          output.textContent = `${group} date, ${budget} budget, using ${transportation} in ${weather} weather: Consider ${fallbackIdeas[budget]}`;
+        }
+      } catch (error) {
+        // If any error occurs (missing combination), use a category fallback
+        output.textContent = `${group} date, ${budget} budget, using ${transportation} in ${weather} weather: Consider ${fallbackIdeas[budget]}`;
+      }
+      
+      // Show the output with animation
+      output.classList.add("active");
+      
+      // Scroll to output
+      output.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+  </script>
+  <footer style="background-color: #f8f8f8; padding: 20px; text-align: center; font-size: 14px; color: #555;">
+    <p>Have questions or want to work with us?</p>
+    <p>Email us at <a href="mailto:dateideagenerate@gmail.com" style="color: #007BFF; text-decoration: none;">dateideagenerate@gmail.com</a></p>
+    <p>Follow us on 
+      <a href="https://instagram.com/yourhandle" target="_blank" style="color: #007BFF; text-decoration: none;">Instagram</a> | 
+      <a href="https://tiktok.com/@yourhandle" target="_blank" style="color: #007BFF; text-decoration: none;">TikTok</a>
+    </p>
+    <p>&copy; 2025 [DateIdeaGenerator.inc]. All rights reserved.</p>
+  </footer>
+</body>
+</html>

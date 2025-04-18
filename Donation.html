@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Donate Now!</title>
+  <link rel="stylesheet" href="../Styles.css/styles.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <div class="site-title">Date Idea Generator</div>
+  <div class="container">
+    <!-- Navigation -->
+    <div class="nav-container">
+      <ul class="nav-menu">
+        <li><a href="FinalProject.html">Date Idea Generator</a></li>
+        <li><a href="Mission.html">Our Mission</a></li>
+        <li><a href="Help.html">Success Stories</a></li>
+        <li><a href="Donation.html" class="active">Donate Now!</a></li>
+        
+      </ul>
+    </div>
+
+    <!-- Page Header -->
+    <h1 class="Header1">Donations</h1>
+    <p class="Paragraph">
+      As a nonprofit, your support helps us keep the lights on and the ideas flowing. 
+      Every little bit counts, and we appreciate your generosity!
+    </p>
+
+    <!-- Donation Form -->
+    <form id="donationForm" class="your-form-class" onsubmit="handleSubmit(event)">
+      <h2 class="Header2">Make a Donation</h2>
+
+      <label class="bold" for="amount">Donation Amount</label>
+      <input class="InputBox" type="number" id="amount" name="amount" placeholder="$25" min="1" required />
+
+      <label class="bold" for="cardName">Name on Card</label>
+      <input class="InputBox" type="text" id="cardName" name="cardName" placeholder="John Doe" required />
+
+      <label class="bold" for="cardNumber">Card Number</label>
+      <input class="InputBox" type="text" id="cardNumber" name="cardNumber" placeholder="1234 5678 9012 3456" required />
+
+      <label class="bold" for="expDate">Expiration Date</label>
+      <input class="InputBox" type="month" id="expDate" name="expDate" required />
+
+      <label class="bold" for="cvv">CVV</label>
+      <input class="InputBox" type="text" id="cvv" name="cvv" placeholder="123" maxlength="4" required />
+
+      <label class="bold" for="address">Billing Address</label>
+      <input class="InputBox" type="text" id="address" name="address" placeholder="123 Main St" required />
+
+      <label class="bold" for="city">City</label>
+      <input class="InputBox" type="text" id="city" name="city" placeholder="Provo" required />
+
+      <label class="bold" for="state">State</label>
+      <input class="InputBox" type="text" id="state" name="state" placeholder="UT" maxlength="2" required />
+
+      <label class="bold" for="zip">ZIP Code</label>
+      <input class="InputBox" type="text" id="zip" name="zip" placeholder="84604" required />
+
+      <button class="your-button-class" type="submit">Donate Now</button>
+    </form>
+
+    <!-- Thank You Message -->
+    <div id="thankYouMessage" class="your-thankyou-class" style="display: none;">
+      <h2>Thank you for your donation!</h2>
+      <p>You're making dating in Provo a little more fun ❤️</p>
+    </div>
+  </div>
+
+  <!-- Script to handle form submission -->
+  <script>
+    function handleSubmit(event) {
+      event.preventDefault(); // Prevents form from refreshing the page
+      document.getElementById("donationForm").style.display = "none";
+      document.getElementById("thankYouMessage").style.display = "block";
+    }
+  </script>
+
+  <!-- Footer -->
+  <footer style="background-color: #f8f8f8; padding: 20px; text-align: center; font-size: 14px; color: #555;">
+    <p>Have questions or want to work with us?</p>
+    <p>Email us at 
+      <a href="mailto:dateideagenerate@gmail.com" style="color: #007BFF; text-decoration: none;">
+        dateideagenerate@gmail.com
+      </a>
+    </p>
+    <p>Follow us on 
+      <a href="https://instagram.com/yourhandle" target="_blank" style="color: #007BFF; text-decoration: none;">Instagram</a> | 
+      <a href="https://tiktok.com/@yourhandle" target="_blank" style="color: #007BFF; text-decoration: none;">TikTok</a>
+    </p>
+    <p>&copy; 2025 [DateIdeaGenerator.inc]. All rights reserved.</p>
+  </footer>
+</body>
+</html>

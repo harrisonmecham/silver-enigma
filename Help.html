@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Support</title>
+    <link rel="stylesheet" href="../Styles.css/styles.css">
+    <style>
+        /* Add these styles directly in your HTML or to your stylesheet */
+        .tableau-responsive-container {
+            width: 100%;
+            height: auto;
+            position: relative;
+            overflow: hidden; /* Prevents scrolling */
+        }
+        
+        .tableauViz {
+            width: 100% !important;
+            height: 1000px !important;
+            display: block !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="site-title">Date Idea Generator</div>
+    
+    <div class="container">
+        <!-- Navigation Menu (same across all pages, just update the "active" class) -->
+        <div class="nav-container">
+          <ul class="nav-menu">
+            <li><a href="FinalProject.html">Date Idea Generator</a></li>
+            <li><a href="Mission.html">Our Mission</a></li>
+            <li><a href="Help.html" class="active">Success Stories</a></li>
+            <li><a href="Donation.html">Donate Now!</a></li>
+          </ul>
+        </div>
+        
+        <h1 class="Header1">Divorce Rates and OUR Success Stories</h1>
+        <div class="tableau-responsive-container">
+            <div class='tableauPlaceholder' id='viz1744938793623' style='position: relative'>
+                <noscript>
+                    <a href='#'><img alt='Intro DASH (2) ' src='https://public.tableau.com/static/images/Ma/MarriageandDivorceRateByStates/IntroDASH2/1_rss.png' style='border: none' /></a>
+                </noscript>
+                <object class='tableauViz' style='display:none;'>
+                    <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' />
+                    <param name='embed_code_version' value='3' />
+                    <param name='site_root' value='' />
+                    <param name='name' value='MarriageandDivorceRateByStates&#47;IntroDASH2' />
+                    <param name='tabs' value='no' />
+                    <param name='toolbar' value='yes' />
+                    <param name='static_image' value='https://public.tableau.com/static/images/Ma/MarriageandDivorceRateByStates/IntroDASH2/1.png' />
+                    <param name='animate_transition' value='yes' />
+                    <param name='display_static_image' value='yes' />
+                    <param name='display_spinner' value='yes' />
+                    <param name='display_overlay' value='yes' />
+                    <param name='display_count' value='yes' />
+                    <param name='language' value='en-US' />
+                </object>
+            </div>
+        </div>
+          
+        <p class="Paragraph">
+          We wanted to provide some success stories to give people
+          more motivation to go on dates. If you want to share your 
+          success story email us at
+          <a href="mailto:support.dateideagenerator@gmail.com" style="color: #ff4d6d; text-decoration: none;">support.dateideagenerator@gmail.com</a>
+        </p>
+
+        <h2>Katie and Sam</h2>
+        <p class="Paragraph">
+          <img class="picture" src="IMG_4126.jpg" alt=""> <br>
+          They used our app to find a fun and unique date idea. They ended up going 
+          on a hike and having a picnic at the top of the mountain. They had so much 
+          fun that they decided to go on another date the next week! They're getting
+          married in 2 weeks!
+        </p>
+
+        <h2>Barbie and Kim</h2>
+        <p class="Paragraph">
+          I bet you didn't know that Barbie and Kim used Date idea Generator
+          to come up with fun dates! They used barbies money to buy some 
+          new cars.
+        </p>
+        
+        <h2>John and Jane Doe</h2>
+        <p class="Paragraph">
+          We found the Does and they tell us that they have been so busy
+          going on dates using the date idea generator that they forgot their 
+          real names! That's how much fun they are having! They have gone on
+          5 dates in the last week and they are planning on going on 5 more!
+        </p>
+      
+      <footer style="background-color: #f8f8f8; padding: 20px; text-align: center; font-size: 14px; color: #555;">
+        <p>Have questions or want to work with us?</p>
+        <p>Email us at <a href="mailto:dateideagenerate@gmail.com" style="color: #ff4d6d; text-decoration: none;">dateideagenerate@gmail.com</a></p>
+        <p>Follow us on 
+          <a href="https://instagram.com/yourhandle" target="_blank" style="color: #ff4d6d; text-decoration: none;">Instagram</a> | 
+          <a href="https://tiktok.com/@yourhandle" target="_blank" style="color: #ff4d6d; text-decoration: none;">TikTok</a>
+        </p>
+        <p>&copy; 2025 [DateIdeaGenerator.inc]. All rights reserved.</p>
+      </footer>
+    
+      <!-- Improved Tableau JavaScript -->
+      <script type='text/javascript'>
+        document.addEventListener('DOMContentLoaded', function() {
+            var divElement = document.getElementById('viz1744938793623');
+            var vizElement = divElement.getElementsByTagName('object')[0];
+            
+            // Set fixed dimensions that match what you want to see
+            vizElement.style.width = '100%';
+            vizElement.style.height = '1000px';
+            vizElement.style.display = 'block';
+            
+            var scriptElement = document.createElement('script');
+            scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
+            
+            // After Tableau loads, force the correct size again
+            scriptElement.onload = function() {
+                setTimeout(function() {
+                    // This forces the viz to maintain the correct size after loading
+                    if (window.tableau && window.tableau.VizManager) {
+                        var viz = window.tableau.VizManager.getVizs()[0];
+                        if (viz) {
+                            viz.addEventListener('firstinteractive', function() {
+                                vizElement.style.width = '100%';
+                                vizElement.style.height = '1000px';
+                                vizElement.style.display = 'block';
+                            });
+                        }
+                    }
+                }, 1000);
+            };
+            
+            vizElement.parentNode.insertBefore(scriptElement, vizElement);
+        });
+      </script>
+    </div>
+</body>
+</html>
